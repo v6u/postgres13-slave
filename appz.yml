@@ -4,36 +4,34 @@ app:
     notify: appzdev@cloudbourne.co
     
 build:
-    version: 12.2
+    version: 12.x
     env: DEV
     build_file: none
     output_files: output/*.zip
-    image_template: postgres_slave-12.2
-    image_name: ea-sharedservices/postgres_slave
+    image_template: postgres_slave-12.7
     
 deploy:
-    context: EA-SharedServices/DEV
+    context: skumarpi/DEV
+    type: statefulset
     replicas: 1
     port:
     - 5432
     
 volumes:
-  - claim: postgress-slave-data-eass
+  - claim: postgress-slave-data
     mount: /appz/data
     name: data
     
-monitor:
-    notify: appzops@cloudbourne.co      
     
 properties:
     POSTGRESQL_REPLICATION_MODE: slave
     PGDATA: /appz/data
     POSTGRES_USER: postgres
     POSTGRES_PASSWORD: 
-      vault: POSTGRES_PASSWORD
+      vault: POSTGRESQL_PASSWORD
     PG_REP_USER: replica    
     PGPASSWORD: 
       vault: PGPASSWORD 
-    PG_MASTER_HOST: postgres-master-12-2
+    PG_MASTER_HOST: postgres-master-12-x
     PG_MASTER_PORT: 5432    
     revision : 07
