@@ -18,9 +18,11 @@ deploy:
     - 5432
     
 volumes:
-  - claim: postgress-slave-data
+  - claim: postgres-slave-data
     mount: /appz/data
     name: data
+    size: 10Gi
+    mode: ReadWriteOnce   
     
     
 properties:
