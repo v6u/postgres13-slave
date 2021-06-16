@@ -36,4 +36,4 @@ properties:
       vault: PGPASSWORD 
     POSTGRESQL_MASTER_HOST: postgres13-master-13-x
     POSTGRESQL_MASTER_PORT: 5432    
-    revision : 09
+    revision : 10
