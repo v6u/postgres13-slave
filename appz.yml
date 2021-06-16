@@ -4,11 +4,11 @@ app:
     notify: appzdev@cloudbourne.co
     
 build:
-    version: 12.x
+    version: 13.x
     env: DEV
     build_file: none
     output_files: output/*.zip
-    image_template: postgres_slave-12.7
+    image_template: postgres_slave-13.3
     
 deploy:
     context: skumarpi/DEV
@@ -34,6 +34,6 @@ properties:
     POSTGRESQL_REP_USER: replica    
     PGPASSWORD: 
       vault: PGPASSWORD 
-    POSTGRESQL_MASTER_HOST: postgres-master-12-x
+    POSTGRESQL_MASTER_HOST: postgres13-master-13-x
     POSTGRESQL_MASTER_PORT: 5432    
     revision : 09
